@@ -20,9 +20,9 @@ android {
 
         //签名配置
         release {
-            storeFile file("jyshop.jks")
+            storeFile file("dagger2android.jks")
             storePassword "123456"
-            keyAlias "jyshop"
+            keyAlias "dagger2android"
             keyPassword "123456"
         }
     }
