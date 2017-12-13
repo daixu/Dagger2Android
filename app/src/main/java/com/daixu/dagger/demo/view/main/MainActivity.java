@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -24,6 +23,9 @@ import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
+import timber.log.Timber;
+
+import static java.lang.String.format;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener, HasSupportFragmentInjector {
 
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     @Override
     public void onTabSelected(int position) {
-        Log.d("onTabSelected", "onTabSelected: " + position);
+        Timber.tag("Dagger2").e(format("onTabSelected=%s", position));
         switch (position) {
             case 0:
                 if (mHomeFragment == null) {
@@ -151,11 +153,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     @Override
     public void onTabUnselected(int position) {
-        Log.d("onTabUnselected", "onTabUnselected: " + position);
+        Timber.tag("Dagger2").e(format("onTabUnselected=%s", position));
     }
 
     @Override
     public void onTabReselected(int position) {
-        Log.d("onTabReselected", "onTabReselected: " + position);
+        Timber.tag("Dagger2").e(format("onTabReselected=%s", position));
     }
 }

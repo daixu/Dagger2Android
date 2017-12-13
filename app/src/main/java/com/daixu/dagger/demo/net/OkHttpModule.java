@@ -1,7 +1,5 @@
 package com.daixu.dagger.demo.net;
 
-import android.util.Log;
-
 import com.daixu.dagger.demo.utils.LoginStateUtil;
 
 import java.io.IOException;
@@ -15,6 +13,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
+import timber.log.Timber;
+
+import static java.lang.String.format;
 
 /**
  * Created by 32422 on 2017/12/12.
@@ -62,7 +63,7 @@ public class OkHttpModule {
             mMessage.append(message.concat("\n"));
             // 请求或者响应结束，打印整条日志
             if (message.startsWith("<-- END HTTP")) {
-                Log.e("TAG", mMessage.toString());
+                Timber.tag("Dagger2").e(format("mMessage=%s", mMessage));
                 mMessage.delete(0, mMessage.length());
             }
         }

@@ -1,10 +1,12 @@
 package com.daixu.dagger.demo.net;
 
 import com.daixu.dagger.demo.bean.BannerResp;
+import com.daixu.dagger.demo.bean.GetShopCartResp;
 import com.daixu.dagger.demo.bean.GetUserTodoReq;
 import com.daixu.dagger.demo.bean.GetUserTodoResp;
 import com.daixu.dagger.demo.bean.LoginReq;
 import com.daixu.dagger.demo.bean.LoginResp;
+import com.daixu.dagger.demo.bean.OnlyUserIdReq;
 
 import io.reactivex.Flowable;
 import retrofit2.http.Body;
@@ -42,4 +44,13 @@ public interface ApiServer {
      */
     @POST("user/commonUserGreensList")
     Flowable<GetUserTodoResp> commonUserGreensList(@Body GetUserTodoReq req);
+
+    /**
+     * 用户购物车列表
+     *
+     * @param req
+     * @return
+     */
+    @POST("user/userShoppingTrolleyList")
+    Flowable<GetShopCartResp> userShoppingTrolleyList(@Body OnlyUserIdReq req);
 }

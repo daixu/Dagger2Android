@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,9 @@ import com.daixu.dagger.demo.bean.GetUserTodoResp;
 import javax.inject.Inject;
 
 import dagger.android.support.AndroidSupportInjection;
+import timber.log.Timber;
+
+import static java.lang.String.format;
 
 public class TodoFragment extends Fragment implements TodoContract.View {
     private static final String ARG_PARAM1 = "param1";
@@ -57,11 +59,11 @@ public class TodoFragment extends Fragment implements TodoContract.View {
 
     @Override
     public void loadUserTodoFailure() {
-        Log.e("TodoFragment", "loadUserTodoFailure");
+        Timber.tag("Dagger2").e("loadUserTodoFailure");
     }
 
     @Override
     public void loadUserTodoSuccess(GetUserTodoResp resp) {
-        Log.e("TodoFragment", "resp=" + resp);
+        Timber.tag("Dagger2").e(String.format("resp=%s", resp));
     }
 }

@@ -3,7 +3,6 @@ package com.daixu.dagger.demo.view.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -18,9 +17,11 @@ import com.daixu.dagger.demo.view.main.MainActivity;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
+import timber.log.Timber;
 
 import static com.daixu.dagger.demo.common.PreferenceKeys.TOKEN;
 import static com.daixu.dagger.demo.common.PreferenceKeys.USER_ID;
+import static java.lang.String.format;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             mTasksRepository.getUserInfo("aaa", new TasksDataSource.GetTaskCallback() {
                 @Override
                 public void onTaskLoaded(String userInfo) {
-                    Log.e("LoginActivity", "userInfo=" + userInfo);
+                    Timber.tag("Dagger2").e(format("userInfo4=%s", userInfo));
                 }
             });
         }
@@ -78,13 +79,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             intent.putExtra("merchantName", merchantName);
             startActivity(intent);
         } else {
-            Log.e("TAG", "resp.data=null");
+            Timber.tag("Dagger2").d("resp.data=null");
         }
     }
 
     @Override
     public void loginFailure(String msg) {
-        Log.e("TAG", "msg=" + msg);
+        Timber.tag("Dagger2").d(format("%s", msg));
     }
 
     @Override
