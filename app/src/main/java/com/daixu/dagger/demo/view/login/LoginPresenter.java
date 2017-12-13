@@ -45,6 +45,15 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void login(String phone, String password, String deviceId) {
+        if (phone == null || phone.length() == 0) {
+            return;
+        }
+        if (password == null || password.length() == 0) {
+            return;
+        }
+        if (deviceId == null || deviceId.length() == 0) {
+            return;
+        }
         LoginReq req = new LoginReq();
         req.userName = phone;
         req.password = password;
