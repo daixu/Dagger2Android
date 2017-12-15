@@ -1,17 +1,14 @@
 package com.daixu.dagger.demo.view.home;
 
 import com.daixu.dagger.demo.bean.BannerResp;
-import com.daixu.dagger.demo.net.ApiServer;
 import com.daixu.dagger.demo.net.BaseSubscriber;
 import com.daixu.dagger.demo.net.ExceptionHandle;
-import com.daixu.dagger.demo.net.RetrofitModule;
+import com.daixu.dagger.demo.net.service.ApiServer;
 
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-
-import static com.daixu.dagger.demo.net.ApiServer.API_SERVER_URL;
 
 /**
  * Created by 32422 on 2017/12/9.
@@ -22,8 +19,8 @@ public class HomePresenter implements HomeContract.Presenter {
     private ApiServer mApiServer;
 
     @Inject
-    HomePresenter(RetrofitModule retrofitModule) {
-        mApiServer = retrofitModule.getServerApi(API_SERVER_URL);
+    HomePresenter(ApiServer apiServer) {
+        mApiServer = apiServer;
     }
 
     @Override

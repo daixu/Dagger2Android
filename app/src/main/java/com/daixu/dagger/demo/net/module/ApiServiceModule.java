@@ -1,13 +1,16 @@
-package com.daixu.dagger.demo.net;
+package com.daixu.dagger.demo.net.module;
 
+import com.daixu.dagger.demo.net.retrofit.ApiRetrofit;
+import com.daixu.dagger.demo.net.service.ApiServer;
 import com.daixu.dagger.demo.utils.LoginStateUtil;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import dagger.Module;
+import dagger.Provides;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -17,17 +20,14 @@ import timber.log.Timber;
 
 import static java.lang.String.format;
 
-/**
- * Created by 32422 on 2017/12/12.
- */
 @Module
-public class OkHttpModule {
+public class ApiServiceModule {
 
-    @Inject
-    OkHttpModule() {
+    public ApiServiceModule() {
     }
 
-    public OkHttpClient providerOkHttpClient() {
+    @Provides
+    OkHttpClient providerOkHttpClient() {
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLogger());
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         Interceptor interceptor = new Interceptor() {
@@ -43,7 +43,6 @@ public class OkHttpModule {
         return new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .addInterceptor(logInterceptor)
-//                    .cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(App.getContext())))
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .readTimeout(20, TimeUnit.SECONDS)
                 .writeTimeout(20, TimeUnit.SECONDS)
@@ -67,5 +66,17 @@ public class OkHttpModule {
                 mMessage.delete(0, mMessage.length());
             }
         }
+    }
+
+    @Singleton
+    @Provides
+    ApiServer providerApiService(ApiRetrofit retrofit) {
+        return retrofit.getRetrofit().create(ApiServer.class);
+    }
+
+    @Singleton
+    @Provides
+    ApiRetrofit providerApiRetrofit(OkHttpClient client) {
+        return new ApiRetrofit(client);
     }
 }

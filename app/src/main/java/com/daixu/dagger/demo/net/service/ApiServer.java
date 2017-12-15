@@ -1,4 +1,4 @@
-package com.daixu.dagger.demo.net;
+package com.daixu.dagger.demo.net.service;
 
 import com.daixu.dagger.demo.bean.BannerResp;
 import com.daixu.dagger.demo.bean.GetShopCartResp;

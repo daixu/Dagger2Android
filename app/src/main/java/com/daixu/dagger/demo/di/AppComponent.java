@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.daixu.dagger.demo.ToDoApplication;
 import com.daixu.dagger.demo.data.TasksRepository;
+import com.daixu.dagger.demo.net.module.ApiServiceModule;
 
 import javax.inject.Singleton;
 
@@ -17,6 +18,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Component(modules = {
         ApplicationModule.class,
         ActivityBindingModule.class,
+        ApiServiceModule.class,
         AndroidSupportInjectionModule.class})
 public interface AppComponent extends AndroidInjector<DaggerApplication> {
 

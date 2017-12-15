@@ -3,17 +3,15 @@ package com.daixu.dagger.demo.view.login;
 import com.daixu.dagger.demo.bean.LoginReq;
 import com.daixu.dagger.demo.bean.LoginResp;
 import com.daixu.dagger.demo.di.ActivityScoped;
-import com.daixu.dagger.demo.net.ApiServer;
 import com.daixu.dagger.demo.net.BaseSubscriber;
 import com.daixu.dagger.demo.net.ExceptionHandle;
-import com.daixu.dagger.demo.net.RetrofitModule;
+import com.daixu.dagger.demo.net.service.ApiServer;
 
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-
-import static com.daixu.dagger.demo.net.ApiServer.API_SERVER_URL;
+import timber.log.Timber;
 
 /**
  * Created by 32422 on 2017/12/11.
@@ -24,8 +22,8 @@ public class LoginPresenter implements LoginContract.Presenter {
     private ApiServer mApiServer;
 
     @Inject
-    LoginPresenter(RetrofitModule retrofitModule) {
-        mApiServer = retrofitModule.getServerApi(API_SERVER_URL);
+    LoginPresenter(ApiServer apiServer) {
+        mApiServer = apiServer;
     }
 
     @Override
@@ -54,6 +52,8 @@ public class LoginPresenter implements LoginContract.Presenter {
         if (deviceId == null || deviceId.length() == 0) {
             return;
         }
+
+        Timber.tag("Dagger2").e(String.format("mApiServer=%s", mApiServer));
         LoginReq req = new LoginReq();
         req.userName = phone;
         req.password = password;

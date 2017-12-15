@@ -1,13 +1,11 @@
 package com.daixu.dagger.demo;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.VisibleForTesting;
 import android.util.Log;
 
 import com.daixu.dagger.demo.data.TasksRepository;
 import com.daixu.dagger.demo.di.AppComponent;
 import com.daixu.dagger.demo.di.DaggerAppComponent;
-import com.daixu.dagger.demo.net.RetrofitModule;
 import com.daixu.dagger.demo.utils.FakeCrashLibrary;
 
 import javax.inject.Inject;
@@ -20,9 +18,6 @@ public class ToDoApplication extends DaggerApplication {
 
     @Inject
     TasksRepository tasksRepository;
-
-    @Inject
-    RetrofitModule mRetrofitModule;
 
     private AppComponent mAppComponent;
     private static ToDoApplication sApplication;
@@ -75,10 +70,5 @@ public class ToDoApplication extends DaggerApplication {
                 }
             }
         }
-    }
-
-    @VisibleForTesting
-    public RetrofitModule getRetrofitModule() {
-        return mRetrofitModule;
     }
 }

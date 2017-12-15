@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import com.daixu.dagger.demo.R;
 import com.daixu.dagger.demo.bean.LoginResp;
-import com.daixu.dagger.demo.data.TasksDataSource;
-import com.daixu.dagger.demo.data.TasksRepository;
 import com.daixu.dagger.demo.utils.RxSPTool;
 import com.daixu.dagger.demo.view.main.MainActivity;
 
@@ -27,8 +25,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Inject
     LoginContract.Presenter mPresenter;
-    @Inject
-    TasksRepository mTasksRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +32,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if (null != mTasksRepository) {
-            mTasksRepository.getUserInfo("aaa", new TasksDataSource.GetTaskCallback() {
-                @Override
-                public void onTaskLoaded(String userInfo) {
-                    Timber.tag("Dagger2").e(format("userInfo4=%s", userInfo));
-                }
-            });
-        }
         findViewById(R.id.email_sign_in_button).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
