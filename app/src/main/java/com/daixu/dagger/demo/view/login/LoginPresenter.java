@@ -66,10 +66,12 @@ public class LoginPresenter implements LoginContract.Presenter {
                 .subscribe(new BaseSubscriber<LoginResp>() {
                     @Override
                     protected void hideDialog() {
+                        mView.dismissProgress();
                     }
 
                     @Override
                     protected void showDialog() {
+                        mView.showProgress();
                     }
 
                     @Override

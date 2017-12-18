@@ -20,5 +20,9 @@ public interface LoginContract {
         void loginSuccess(LoginResp resp);
 
         void loginFailure(String msg);
+
+        void showProgress();
+
+        void dismissProgress();
     }
 }

@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     private void attemptLogin() {
-        mPresenter.login("13800138003", "96e79218965eb72c92a549dd5a330112", "59fb20fb-00b3-4e7b-86db-ea440a814981");
+        mPresenter.login("18682367801", "e10adc3949ba59abbe56e057f20f883e", "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
     }
 
     @Override
@@ -74,6 +74,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void loginFailure(String msg) {
         Timber.tag("Dagger2").d(format("%s", msg));
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void dismissProgress() {
+
     }
 
     @Override
