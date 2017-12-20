@@ -2,7 +2,6 @@ package com.daixu.dagger.demo.view.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -10,6 +9,7 @@ import android.widget.Toast;
 import com.daixu.dagger.demo.R;
 import com.daixu.dagger.demo.bean.LoginResp;
 import com.daixu.dagger.demo.utils.RxSPTool;
+import com.daixu.dagger.demo.view.BaseActivity;
 import com.daixu.dagger.demo.view.main.MainActivity;
 
 import javax.inject.Inject;
@@ -21,7 +21,7 @@ import static com.daixu.dagger.demo.common.PreferenceKeys.TOKEN;
 import static com.daixu.dagger.demo.common.PreferenceKeys.USER_ID;
 import static java.lang.String.format;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.View {
+public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Inject
     LoginContract.Presenter mPresenter;
@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra("merchantName", merchantName);
             startActivity(intent);
+            finish();
         } else {
             Timber.tag("Dagger2").d("resp.data=null");
         }

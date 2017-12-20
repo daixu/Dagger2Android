@@ -1,20 +1,28 @@
 package com.daixu.dagger.demo.view.main;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.pm.ShortcutInfo;
+import android.content.pm.ShortcutManager;
+import android.graphics.drawable.Icon;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.daixu.dagger.demo.R;
+import com.daixu.dagger.demo.view.BaseActivity;
 import com.daixu.dagger.demo.view.home.HomeFragment;
+import com.daixu.dagger.demo.view.me.AboutActivity;
 import com.daixu.dagger.demo.view.me.MeFragment;
 import com.daixu.dagger.demo.view.shopcart.ShoppingCartFragment;
 import com.daixu.dagger.demo.view.todo.TodoFragment;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -27,7 +35,7 @@ import timber.log.Timber;
 
 import static java.lang.String.format;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener, HasSupportFragmentInjector {
+public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener, HasSupportFragmentInjector {
 
     private BottomNavigationBar bottomNavigationBar;
     private HomeFragment mHomeFragment;
@@ -52,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         initBottomNavigationBar();
 
         setDefaultFragment();
+
+        initDynamicShortcuts();
     }
 
     @Override
@@ -159,5 +169,31 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     @Override
     public void onTabReselected(int position) {
         Timber.tag("Dagger2").e(format("onTabReselected=%s", position));
+    }
+
+    private void initDynamicShortcuts() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N_MR1) {
+            return;
+        }
+        // 创建动态快捷方式的第一步，创建ShortcutManager
+        ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
+        // 构建动态快捷方式的详细信息
+        ShortcutInfo myWallet = new ShortcutInfo.Builder(this, "my_wallet")
+                .setShortLabel("我的钱包")
+                .setLongLabel("我的钱包")
+                .setIcon(Icon.createWithResource(this, R.mipmap.ic_launcher))
+                .setIntent(new Intent(Intent.ACTION_VIEW, Uri.EMPTY, this, AboutActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK))
+                .build();
+
+        ShortcutInfo myOrder = new ShortcutInfo.Builder(this, "my_order")
+                .setShortLabel("我的订单")
+                .setLongLabel("我的订单")
+                .setIcon(Icon.createWithResource(this, R.mipmap.ic_launcher))
+                .setIntent(new Intent(Intent.ACTION_MAIN, Uri.EMPTY, this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK))
+                .build();
+        // 为ShortcutManager设置动态快捷方式集合
+        if (null != shortcutManager) {
+            shortcutManager.setDynamicShortcuts(Arrays.asList(myWallet, myOrder));
+        }
     }
 }
