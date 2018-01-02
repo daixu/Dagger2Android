@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutDisabledMessage="@string/tv_about"
+        android:shortcutId="static"
+        android:shortcutLongLabel="@string/tv_about"
+        android:shortcutShortLabel="@string/tv_about">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.daixu.dagger.demo.view.me.AboutActivity"
+            android:targetPackage="com.daixu.dagger.demo"/>
+    </shortcut>
+</shortcuts>

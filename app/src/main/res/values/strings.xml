@@ -21,4 +21,6 @@
     <string name="title_home">首页</string>
     <string name="title_todo">常用清单</string>
     <string name="shopping_cart">购物车</string>
+
+    <string name="tv_about">关于</string>
 </resources>
