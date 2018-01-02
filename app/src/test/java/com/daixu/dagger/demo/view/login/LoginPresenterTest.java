@@ -1,22 +1,28 @@
 package com.daixu.dagger.demo.view.login;
 
+import com.daixu.dagger.demo.BuildConfig;
 import com.daixu.dagger.demo.RxSchedulersOverrideRule;
 import com.daixu.dagger.demo.net.retrofit.ApiRetrofit;
 import com.daixu.dagger.demo.net.service.ApiServer;
+import com.daixu.dagger.demo.utils.MD5;
 
 import org.junit.Before;
-import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import okhttp3.OkHttpClient;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowLog;
 
 import static org.mockito.Mockito.verify;
 
 /**
  * Created by 32422 on 2017/12/13.
  */
+@RunWith(RobolectricTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 23)
 public class LoginPresenterTest {
 
     @Mock
@@ -28,17 +34,15 @@ public class LoginPresenterTest {
     @Mock
     LoginContract.View mView;
 
-    @Mock
-    OkHttpClient mOkHttpClient;
-
-    @ClassRule
-    public static RxSchedulersOverrideRule sSchedulersOverrideRule = new RxSchedulersOverrideRule();
+    @Rule
+    public RxSchedulersOverrideRule rule = new RxSchedulersOverrideRule();
 
     @Before
-    public void setupLoginPresenter() {
-        MockitoAnnotations.initMocks(this);
+    public void setUp() {
+        ShadowLog.stream = System.out;
 
-        ApiRetrofit retrofit = new ApiRetrofit(mOkHttpClient);
+        MockitoAnnotations.initMocks(this);
+        ApiRetrofit retrofit = new ApiRetrofit();
         mApiServer = retrofit.getRetrofit().create(ApiServer.class);
         mPresenter = new LoginPresenter(mApiServer);
 
@@ -46,9 +50,8 @@ public class LoginPresenterTest {
     }
 
     @Test
-    public void loginSuccess() throws Exception {
-        mPresenter.login("18682367801", "e10adc3949ba59abbe56e057f20f883e", "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
-
+    public void loginSuccess() {
+        mPresenter.login("18682367801", MD5.encrypt("123456"), "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
         verify(mView).showProgress();
         verify(mView).dismissProgress();
     }
@@ -60,7 +63,7 @@ public class LoginPresenterTest {
         verify(mView).showProgress();
         verify(mView).dismissProgress();
 
-        verify(mView).loginFailure(null);
+        verify(mView).loginFailure();
     }
 
 }
