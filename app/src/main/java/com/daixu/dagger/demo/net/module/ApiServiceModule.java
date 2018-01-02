@@ -76,7 +76,7 @@ public class ApiServiceModule {
 
     @Singleton
     @Provides
-    ApiRetrofit providerApiRetrofit(OkHttpClient client) {
-        return new ApiRetrofit(client);
+    ApiRetrofit providerApiRetrofit() {
+        return new ApiRetrofit();
     }
 }

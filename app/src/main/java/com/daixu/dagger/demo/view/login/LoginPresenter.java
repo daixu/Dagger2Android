@@ -76,7 +76,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                     @Override
                     public void onError(ExceptionHandle.ResponseThrowable e) {
-                        mView.loginFailure(e.message);
+                        mView.loginFailure();
                     }
 
                     @Override
@@ -85,10 +85,10 @@ public class LoginPresenter implements LoginContract.Presenter {
                             if (resp.isOk()) {
                                 mView.loginSuccess(resp);
                             } else {
-                                mView.loginFailure(resp.msg);
+                                mView.loginFailure();
                             }
                         } else {
-                            mView.loginFailure("");
+                            mView.loginFailure();
                         }
                     }
                 });

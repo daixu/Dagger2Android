@@ -19,7 +19,7 @@ public interface LoginContract {
     interface View extends BaseView<Presenter> {
         void loginSuccess(LoginResp resp);
 
-        void loginFailure(String msg);
+        void loginFailure();
 
         void showProgress();
 

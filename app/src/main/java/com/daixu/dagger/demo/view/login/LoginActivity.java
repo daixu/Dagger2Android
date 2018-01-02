@@ -73,8 +73,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
-    public void loginFailure(String msg) {
-        Timber.tag("Dagger2").d(format("%s", msg));
+    public void loginFailure() {
+        Timber.tag("Dagger2").d("failure");
     }
 
     @Override
