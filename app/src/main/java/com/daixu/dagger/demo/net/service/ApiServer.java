@@ -7,6 +7,7 @@ import com.daixu.dagger.demo.bean.GetUserTodoResp;
 import com.daixu.dagger.demo.bean.LoginReq;
 import com.daixu.dagger.demo.bean.LoginResp;
 import com.daixu.dagger.demo.bean.OnlyUserIdReq;
+import com.daixu.dagger.demo.bean.UserReceivingAreaResp;
 
 import io.reactivex.Flowable;
 import retrofit2.http.Body;
@@ -17,7 +18,8 @@ import retrofit2.http.POST;
  */
 
 public interface ApiServer {
-    String API_SERVER_URL = "http://api.front.jinyoufarm.com/api/";
+    String API_SERVER_URL = "http://api.front.jinyoufarm.cn/api/";
+//    String API_SERVER_URL = "http://api.front.jinyoufarm.com/api/";
 
     /**
      * 获取广告图
@@ -53,4 +55,7 @@ public interface ApiServer {
      */
     @POST("user/userShoppingTrolleyList")
     Flowable<GetShopCartResp> userShoppingTrolleyList(@Body OnlyUserIdReq req);
+
+    @POST("user/selUserReceivingArea")
+    Flowable<UserReceivingAreaResp> selUserReceivingArea(@Body OnlyUserIdReq req);
 }
