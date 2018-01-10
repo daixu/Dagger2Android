@@ -37,7 +37,7 @@ public class GithubService {
             }
         };
         return new OkHttpClient.Builder()
-                .addInterceptor(interceptor)
+//                .addInterceptor(interceptor)
                 .addInterceptor(new LoggingInterceptor())
                 .build();
     }
