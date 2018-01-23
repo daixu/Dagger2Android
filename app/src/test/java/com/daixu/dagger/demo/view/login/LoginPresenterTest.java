@@ -51,7 +51,7 @@ public class LoginPresenterTest {
 
     @Test
     public void loginSuccess() {
-        mPresenter.login("13800138004", MD5.encrypt("123456"), "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
+        mPresenter.login("13800138004", MD5.encrypt("111111"), "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
         verify(mView).showProgress();
         verify(mView).dismissProgress();
     }

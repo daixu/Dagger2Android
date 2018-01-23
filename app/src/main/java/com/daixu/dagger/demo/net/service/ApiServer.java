@@ -1,6 +1,8 @@
 package com.daixu.dagger.demo.net.service;
 
 import com.daixu.dagger.demo.bean.BannerResp;
+import com.daixu.dagger.demo.bean.GetGoodsTotalReq;
+import com.daixu.dagger.demo.bean.GetGoodsTotalResp;
 import com.daixu.dagger.demo.bean.GetShopCartResp;
 import com.daixu.dagger.demo.bean.GetUserTodoReq;
 import com.daixu.dagger.demo.bean.GetUserTodoResp;
@@ -58,4 +60,13 @@ public interface ApiServer {
 
     @POST("user/selUserReceivingArea")
     Flowable<UserReceivingAreaResp> selUserReceivingArea(@Body OnlyUserIdReq req);
+
+    /**
+     * 获得用户购物车里面商品数量
+     *
+     * @param req
+     * @return
+     */
+    @POST("user/userShoppingTrolleyGoodsTotal")
+    Flowable<String> userShoppingTrolleyGoodsTotal(@Body GetGoodsTotalReq req);
 }

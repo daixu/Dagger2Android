@@ -31,13 +31,13 @@ public class GithubService {
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request()
                         .newBuilder()
-                        .addHeader("token", "801bf2b8c8ab4527af982e5d27b4be37")
+                        .addHeader("token", "9b3898a5f207479a87508b46f48cc2af")
                         .build();
                 return chain.proceed(request);
             }
         };
         return new OkHttpClient.Builder()
-//                .addInterceptor(interceptor)
+                .addInterceptor(interceptor)
                 .addInterceptor(new LoggingInterceptor())
                 .build();
     }
