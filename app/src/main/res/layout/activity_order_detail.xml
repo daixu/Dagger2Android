@@ -1,21 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.daixu.dagger.demo.view.home.HomeFragment">
+    tools:context="com.daixu.dagger.demo.view.order.OrderDetailActivity">
 
     <Button
-        android:id="@+id/tv_order"
+        android:id="@+id/btn_close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="订单"/>
-
-    <Button
-        android:id="@+id/tv_about"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"/>
-
+        android:text="关闭"/>
 </LinearLayout>

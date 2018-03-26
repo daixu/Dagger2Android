@@ -49,8 +49,13 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartContra
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // cdbe0737-60e3-4747-a523-7f8a76e0b991
+
+        init();
+    }
+
+    private void init() {
         mPresenter.takeView(this);
-        mPresenter.loadShopCartList("cdbe0737-60e3-4747-a523-7f8a76e0b991");
+        mPresenter.loadShopCartList("040b3aa4-67de-4f12-8412-83de8cf4b784");
     }
 
     @Override

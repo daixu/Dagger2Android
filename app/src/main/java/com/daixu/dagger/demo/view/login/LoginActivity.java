@@ -7,7 +7,9 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.daixu.dagger.demo.R;
+import com.daixu.dagger.demo.ToDoApplication;
 import com.daixu.dagger.demo.bean.LoginResp;
+import com.daixu.dagger.demo.utils.MD5;
 import com.daixu.dagger.demo.utils.RxSPTool;
 import com.daixu.dagger.demo.view.BaseActivity;
 import com.daixu.dagger.demo.view.main.MainActivity;
@@ -47,7 +49,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     private void attemptLogin() {
-        mPresenter.login("18682367801", "e10adc3949ba59abbe56e057f20f883e", "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
+        mPresenter.login("18682367801", MD5.encrypt("123456"), "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
     }
 
     @Override
@@ -60,6 +62,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         if (null != resp.data) {
             RxSPTool.putString(this, USER_ID, resp.data.userId);
             RxSPTool.putString(this, TOKEN, resp.data.token);
+
+            ToDoApplication.token = resp.data.token;
 
             String merchantName = resp.data.merchantName;
             Toast.makeText(this, "resp=" + resp.data.merchantName, Toast.LENGTH_SHORT).show();

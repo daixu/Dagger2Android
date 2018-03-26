@@ -49,7 +49,7 @@ public class TodoFragment extends Fragment implements TodoContract.View {
         super.onViewCreated(view, savedInstanceState);
         // cdbe0737-60e3-4747-a523-7f8a76e0b991
         mPresenter.takeView(this);
-        mPresenter.loadUserTodoList("cdbe0737-60e3-4747-a523-7f8a76e0b991", "");
+        mPresenter.loadUserTodoList("040b3aa4-67de-4f12-8412-83de8cf4b784", "");
     }
 
     @Override

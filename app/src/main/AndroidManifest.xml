@@ -25,8 +25,18 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts"/>
         </activity>
-        <activity android:name=".view.main.MainActivity"/>
-        <activity android:name=".view.me.AboutActivity" />
+        <activity
+            android:name=".view.main.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.me.AboutActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.order.MyOrderActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.order.OrderDetailActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

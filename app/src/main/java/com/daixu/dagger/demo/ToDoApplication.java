@@ -33,6 +33,8 @@ public class ToDoApplication extends DaggerApplication {
         return sApplication;
     }
 
+    public static String token = "";
+
     @Override
     public void onCreate() {
         super.onCreate();

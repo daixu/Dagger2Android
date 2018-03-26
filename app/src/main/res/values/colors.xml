@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="normal_text_color">#62C6B6</color>
+    <color name="default_bg_color">#F2F2F2</color>
+    <color name="white">#ffffff</color>
+
+    <color name="main_body_major_color">#333333</color>
 </resources>

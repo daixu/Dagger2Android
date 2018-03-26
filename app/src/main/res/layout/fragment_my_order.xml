@@ -4,16 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.daixu.dagger.demo.view.home.HomeFragment">
+    tools:context="com.daixu.dagger.demo.view.order.MyOrderFragment">
 
     <Button
-        android:id="@+id/tv_order"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="订单"/>
-
-    <Button
-        android:id="@+id/tv_about"
+        android:id="@+id/btn_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/hello_blank_fragment"/>

@@ -2,6 +2,7 @@ package com.daixu.dagger.demo.net.retrofit;
 
 import android.util.Log;
 
+import com.daixu.dagger.demo.ToDoApplication;
 import com.daixu.dagger.demo.utils.LoginStateUtil;
 
 import java.io.IOException;
@@ -44,9 +45,11 @@ public class ApiRetrofit {
         Interceptor interceptor = new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
+                //String token = LoginStateUtil.getInstance().getToken();
+                String token = ToDoApplication.token;
                 Request request = chain.request()
                         .newBuilder()
-                        .addHeader("token", LoginStateUtil.getInstance().getToken())
+                        .addHeader("token", token)
                         .build();
                 return chain.proceed(request);
             }

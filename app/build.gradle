@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'walle'
+apply plugin: 'android-aspectjx'
 
 def releaseTime() {
     return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
@@ -85,6 +86,8 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     compile 'io.reactivex.rxjava2:rxjava:2.1.7'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    implementation 'com.justkiddingbaby:fragment-rigger:1.2.1'
 }
 
 walle {

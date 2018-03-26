@@ -1,9 +1,11 @@
 package com.daixu.dagger.demo.net.service;
 
 import com.daixu.dagger.demo.bean.BannerResp;
+import com.daixu.dagger.demo.bean.BaseResp;
 import com.daixu.dagger.demo.bean.GetGoodsTotalReq;
 import com.daixu.dagger.demo.bean.GetGoodsTotalResp;
 import com.daixu.dagger.demo.bean.GetShopCartResp;
+import com.daixu.dagger.demo.bean.GetUserOrdersReq;
 import com.daixu.dagger.demo.bean.GetUserTodoReq;
 import com.daixu.dagger.demo.bean.GetUserTodoResp;
 import com.daixu.dagger.demo.bean.LoginReq;
@@ -69,4 +71,10 @@ public interface ApiServer {
      */
     @POST("user/userShoppingTrolleyGoodsTotal")
     Flowable<String> userShoppingTrolleyGoodsTotal(@Body GetGoodsTotalReq req);
+
+    /**
+     * 根据用户Id查询用户订单
+     */
+    @POST("order/order/getUserOrders")
+    Flowable<BaseResp> getUserOrders(@Body GetUserOrdersReq req);
 }
