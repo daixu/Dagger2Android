@@ -30,7 +30,7 @@ public class MyOrderFragment extends Fragment implements MyOrderContract.View{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private int position;
+    private int position = 0;
     private String mParam2;
 
     @Inject
