@@ -23,8 +23,6 @@ import retrofit2.http.POST;
  */
 
 public interface ApiServer {
-    String API_SERVER_URL = "http://api.front.jinyoufarm.cn/api/";
-//    String API_SERVER_URL = "http://api.front.jinyoufarm.com/api/";
 
     /**
      * 获取广告图

@@ -1,5 +1,6 @@
 package com.daixu.dagger.demo.view.me;
 
+import android.content.Intent;
 import android.content.pm.ShortcutManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,9 +9,13 @@ import android.view.View;
 import com.daixu.dagger.demo.R;
 import com.daixu.dagger.demo.ToDoApplication;
 import com.daixu.dagger.demo.view.BaseActivity;
+import com.daixu.dagger.demo.view.dev.DeveloperActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class AboutActivity extends BaseActivity {
 
@@ -18,20 +23,7 @@ public class AboutActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-
-        findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        findViewById(R.id.btn_exit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 exit();
-            }
-        });
+        ButterKnife.bind(this);
     }
 
     void exit() {
@@ -50,5 +42,26 @@ public class AboutActivity extends BaseActivity {
         }
         ToDoApplication.getInstance().finishAllActivity();
         finish();
+    }
+
+    @OnClick({R.id.btn_close, R.id.btn_exit, R.id.btn_dev})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_close: {
+                finish();
+            }
+            break;
+            case R.id.btn_exit: {
+                exit();
+            }
+            break;
+            case R.id.btn_dev: {
+                Intent intent = new Intent(this, DeveloperActivity.class);
+                startActivity(intent);
+            }
+            break;
+            default:
+                break;
+        }
     }
 }

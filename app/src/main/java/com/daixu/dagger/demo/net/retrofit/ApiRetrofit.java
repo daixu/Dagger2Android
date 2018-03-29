@@ -1,7 +1,5 @@
 package com.daixu.dagger.demo.net.retrofit;
 
-import android.util.Log;
-
 import com.daixu.dagger.demo.ToDoApplication;
 import com.daixu.dagger.demo.utils.LoginStateUtil;
 
@@ -19,7 +17,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import timber.log.Timber;
 
-import static com.daixu.dagger.demo.net.service.ApiServer.API_SERVER_URL;
+import static com.daixu.dagger.demo.common.Constant.Url.API_SERVER_URL;
 import static java.lang.String.format;
 
 /**
@@ -39,14 +37,15 @@ public class ApiRetrofit {
                 .build();
     }
 
-    private OkHttpClient getOkHttpClient(){
+    private OkHttpClient getOkHttpClient() {
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLogger());
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         Interceptor interceptor = new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
-                //String token = LoginStateUtil.getInstance().getToken();
-                String token = ToDoApplication.token;
+                String token = LoginStateUtil.getInstance().getToken();
+                Timber.tag("getOkHttpClient").e("token=" + token);
+                // String token = ToDoApplication.token;
                 Request request = chain.request()
                         .newBuilder()
                         .addHeader("token", token)

@@ -40,4 +40,6 @@
 
     <string name="commodity_sum">共%1$d件商品</string>
     <string name="commodity_deposit">（含押金¥%1$s元）</string>
+
+    <string name="interface_address">接口地址:</string>
 </resources>

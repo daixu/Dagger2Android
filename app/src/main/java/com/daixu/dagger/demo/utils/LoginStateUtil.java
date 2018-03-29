@@ -1,8 +1,13 @@
 package com.daixu.dagger.demo.utils;
 
 import android.content.Context;
+import android.text.TextUtils;
+
+import com.daixu.dagger.demo.ToDoApplication;
 
 import javax.inject.Inject;
+
+import static com.daixu.dagger.demo.common.PreferenceKeys.TOKEN;
 
 public class LoginStateUtil {
 
@@ -24,11 +29,12 @@ public class LoginStateUtil {
     }
 
     public boolean checkLoginAndRequestLogin(Context context) {
-        return true;
+        String token = RxSPTool.getContent(context, TOKEN);
+        return !TextUtils.isEmpty(token);
     }
 
     public String getToken() {
-//        Log.e("TAG", "mContext=" + mContext);
-        return "7dc536a68ea340248353e02a576cd037";
+        String token = RxSPTool.getContent(ToDoApplication.getInstance().getApplicationContext(), TOKEN);
+        return token;
     }
 }

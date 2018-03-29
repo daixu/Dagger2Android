@@ -12,10 +12,12 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.daixu.dagger.demo.common.Constant.Url.API_SERVER_URL;
+
 public class GithubService {
 
     private static Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(ApiServer.API_SERVER_URL)
+            .baseUrl(API_SERVER_URL)
             .client(getOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

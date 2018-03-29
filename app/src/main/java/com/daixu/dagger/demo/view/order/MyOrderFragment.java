@@ -220,21 +220,22 @@ public class MyOrderFragment extends RxFragment implements SwipeRefreshLayout.On
     @Override
     public void updateUserOrders(GetUserOrdersResp resp) {
         Timber.tag("updateUserOrders").e("resp=" + resp);
-
         mSwipeRefreshLayout.setRefreshing(false);
-        if (pageNum == 1) {
-            mList.clear();
+        if (null != resp.list && resp.list.size() > 0) {
+            if (pageNum == 1) {
+                mList.clear();
+            }
+            mList.addAll(resp.list);
+            if (pageNum >= resp.pages) {
+                isEnd = true;
+            } else {
+                isEnd = false;
+                pageNum += 1;
+            }
+            mAdapter.setNewData(mList);
+            mAdapter.loadMoreComplete();
+            mSwipeRefreshLayout.setEnabled(true);
         }
-        mList.addAll(resp.list);
-        if (pageNum >= resp.pages) {
-            isEnd = true;
-        } else {
-            isEnd = false;
-            pageNum += 1;
-        }
-        mAdapter.setNewData(mList);
-        mAdapter.loadMoreComplete();
-        mSwipeRefreshLayout.setEnabled(true);
     }
 
     @Override
