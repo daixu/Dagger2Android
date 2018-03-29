@@ -33,7 +33,7 @@ public class ResponseTest {
     @Test
     public void selUserReceivingAreaTest() {
         OnlyUserIdReq req = new OnlyUserIdReq();
-        req.userId = "040b3aa4-67de-4f12-8412-83de8cf4b784";
+        req.userId = "738910b1-a828-46cf-bcbb-8ccd28a23b7b";
         GithubService.createGithubService()
                 .selUserReceivingArea(req)
                 .subscribeOn(Schedulers.io())

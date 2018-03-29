@@ -13,6 +13,7 @@ import com.daixu.dagger.demo.utils.MD5;
 import com.daixu.dagger.demo.utils.RxSPTool;
 import com.daixu.dagger.demo.view.BaseActivity;
 import com.daixu.dagger.demo.view.main.MainActivity;
+import com.trello.rxlifecycle2.LifecycleTransformer;
 
 import javax.inject.Inject;
 
@@ -49,12 +50,17 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     private void attemptLogin() {
-        mPresenter.login("18682367801", MD5.encrypt("123456"), "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
+        mPresenter.login("13800138004", MD5.encrypt("111111"), "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
     }
 
     @Override
     public boolean isActive() {
         return false;
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> bindToLife() {
+        return this.<T>bindToLifecycle();
     }
 
     @Override

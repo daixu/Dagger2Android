@@ -1,6 +1,7 @@
 package com.daixu.dagger.demo.view.order;
 
 import com.daixu.dagger.demo.bean.BaseResp;
+import com.daixu.dagger.demo.bean.GetUserOrdersResp;
 import com.daixu.dagger.demo.view.BasePresenter;
 import com.daixu.dagger.demo.view.BaseView;
 
@@ -18,7 +19,7 @@ public interface MyOrderContract {
 
     interface View extends BaseView<Presenter> {
 
-        void updateUserOrders(BaseResp reso);
+        void updateUserOrders(GetUserOrdersResp reso);
 
         void getUserOrdersFailure();
     }

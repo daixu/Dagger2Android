@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.daixu.dagger.demo.R;
 import com.daixu.dagger.demo.bean.BannerResp;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import javax.inject.Inject;
 
@@ -22,7 +24,7 @@ import timber.log.Timber;
 
 import static java.lang.String.format;
 
-public class HomeFragment extends Fragment implements HomeContract.View, HasSupportFragmentInjector {
+public class HomeFragment extends RxFragment implements HomeContract.View, HasSupportFragmentInjector {
     private static final String ARG_PARAM1 = "param1";
     @Inject
     DispatchingAndroidInjector<Fragment> childFragmentInjector;
@@ -68,6 +70,11 @@ public class HomeFragment extends Fragment implements HomeContract.View, HasSupp
     @Override
     public boolean isActive() {
         return false;
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> bindToLife() {
+        return this.<T>bindToLifecycle();
     }
 
     @Override

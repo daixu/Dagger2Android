@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/blank_space_small"
+    android:background="@color/default_bg_color"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/single_item_height_normal"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/img_qr_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/blank_space_small"
+            android:layout_marginLeft="@dimen/blank_space_small"
+            android:layout_marginRight="@dimen/blank_space_small"
+            android:layout_marginStart="@dimen/blank_space_small"
+            android:src="@mipmap/qr_code"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/single_item_height_normal"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@id/img_qr_code"
+            android:layout_toStartOf="@id/img_qr_code"
+            android:background="@color/white"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingEnd="@dimen/blank_space_small"
+            android:paddingLeft="@dimen/blank_space_small"
+            android:paddingRight="@dimen/blank_space_small"
+            android:paddingStart="@dimen/blank_space_small"
+            android:singleLine="true"
+            android:textColor="@color/main_body_major_color"
+            android:textSize="@dimen/text_size_normal"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size"
+        android:background="@color/line_color"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/single_item_height_normal"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_order_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/blank_space_small"
+            android:layout_marginStart="@dimen/blank_space_small"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/main_body_major_color"
+            android:textSize="@dimen/text_size_small"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|end">
+
+            <TextView
+                android:id="@+id/tv_sum_money"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/main_body_major_color"
+                android:textSize="@dimen/text_size_normal"/>
+
+            <TextView
+                android:id="@+id/tv_deposit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/main_body_prompt_color"
+                android:textSize="@dimen/text_size_small"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_state"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/single_item_height_normal"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_size"
+            android:background="@color/line_color"/>
+
+        <LinearLayout
+            android:id="@+id/layout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/blank_space_least"
+            android:paddingRight="@dimen/blank_space_least">
+
+            <Button
+                android:id="@+id/btn_cancel_order"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/blank_space_least"
+                android:layout_marginStart="@dimen/blank_space_least"
+                android:background="@drawable/button_hollow_gray"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/cancel_order"
+                android:textColor="@color/main_body_prompt_color"
+                android:textSize="@dimen/text_size_normal"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btn_to_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/blank_space_least"
+                android:layout_marginStart="@dimen/blank_space_least"
+                android:background="@drawable/button_hollow_green"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/to_pay"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/text_size_normal"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btn_evaluate"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/blank_space_least"
+                android:layout_marginStart="@dimen/blank_space_least"
+                android:background="@drawable/button_hollow_green"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/evaluate"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/text_size_normal"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btn_buy_again"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/blank_space_least"
+                android:layout_marginStart="@dimen/blank_space_least"
+                android:background="@drawable/button_hollow_green"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/buy_again"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/text_size_normal"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btn_receipt"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/blank_space_least"
+                android:layout_marginStart="@dimen/blank_space_least"
+                android:background="@drawable/button_hollow_green"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/receipt"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/text_size_normal"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_arrival_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="@dimen/blank_space_small"
+            android:layout_marginStart="@dimen/blank_space_small"
+            android:layout_toLeftOf="@id/layout_button"
+            android:layout_toStartOf="@id/layout_button"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/main_body_major_color"
+            android:textSize="@dimen/text_size_normal"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -9,4 +9,14 @@
     <color name="white">#ffffff</color>
 
     <color name="main_body_major_color">#333333</color>
+
+    <!-- 线条颜色 #DCDDDD -->
+    <color name="line_color">#DCDDDD</color>
+
+    <!-- 提示字体颜色 (浅灰色) -->
+    <color name="main_body_prompt_color">#999999</color>
+
+    <color name="aid_prompt_color">#FB483E</color>
+
+    <color name="colorBackground">#319bd2</color>
 </resources>

@@ -8,6 +8,7 @@ import com.daixu.dagger.demo.data.TasksRepository;
 import com.daixu.dagger.demo.di.AppComponent;
 import com.daixu.dagger.demo.di.DaggerAppComponent;
 import com.daixu.dagger.demo.utils.FakeCrashLibrary;
+import com.facebook.stetho.Stetho;
 
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -42,6 +43,7 @@ public class ToDoApplication extends DaggerApplication {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
+            Stetho.initializeWithDefaults(this);
         } else {
             Timber.plant(new CrashReportingTree());
         }

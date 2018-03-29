@@ -3,22 +3,25 @@ package com.daixu.dagger.demo.view.shopcart;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.daixu.dagger.demo.R;
 import com.daixu.dagger.demo.bean.GetShopCartResp;
+import com.daixu.dagger.demo.utils.RxSPTool;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import javax.inject.Inject;
 
 import dagger.android.support.AndroidSupportInjection;
 import timber.log.Timber;
 
+import static com.daixu.dagger.demo.common.PreferenceKeys.USER_ID;
 import static java.lang.String.format;
 
-public class ShoppingCartFragment extends Fragment implements ShoppingCartContract.View {
+public class ShoppingCartFragment extends RxFragment implements ShoppingCartContract.View {
     private static final String ARG_PARAM1 = "param1";
 
     @Inject
@@ -55,12 +58,18 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartContra
 
     private void init() {
         mPresenter.takeView(this);
-        mPresenter.loadShopCartList("040b3aa4-67de-4f12-8412-83de8cf4b784");
+        String userId = RxSPTool.getString(this.getActivity(), USER_ID);
+        mPresenter.loadShopCartList(userId);
     }
 
     @Override
     public boolean isActive() {
         return false;
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> bindToLife() {
+        return this.<T>bindToLifecycle();
     }
 
     @Override

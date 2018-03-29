@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/mine_background"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/blank_space_largest"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="亲，您还没有订单哦，赶紧去购物吧！"
+        android:textColor="@color/main_body_prompt_color"
+        android:textSize="@dimen/text_size_normal"/>
+
+    <Button
+        android:id="@+id/btn_shopping"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/blank_space_small"
+        android:background="@drawable/button_hollow_green"
+        android:text="去购物"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/text_size_normal"/>
+</LinearLayout>

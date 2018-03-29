@@ -10,15 +10,19 @@ import android.view.ViewGroup;
 
 import com.daixu.dagger.demo.R;
 import com.daixu.dagger.demo.bean.GetUserTodoResp;
+import com.daixu.dagger.demo.utils.RxSPTool;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import javax.inject.Inject;
 
 import dagger.android.support.AndroidSupportInjection;
 import timber.log.Timber;
 
+import static com.daixu.dagger.demo.common.PreferenceKeys.USER_ID;
 import static java.lang.String.format;
 
-public class TodoFragment extends Fragment implements TodoContract.View {
+public class TodoFragment extends RxFragment implements TodoContract.View {
     private static final String ARG_PARAM1 = "param1";
     @Inject
     TodoContract.Presenter mPresenter;
@@ -49,12 +53,18 @@ public class TodoFragment extends Fragment implements TodoContract.View {
         super.onViewCreated(view, savedInstanceState);
         // cdbe0737-60e3-4747-a523-7f8a76e0b991
         mPresenter.takeView(this);
-        mPresenter.loadUserTodoList("040b3aa4-67de-4f12-8412-83de8cf4b784", "");
+        String userId = RxSPTool.getString(this.getActivity(), USER_ID);
+        mPresenter.loadUserTodoList(userId, "");
     }
 
     @Override
     public boolean isActive() {
         return false;
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> bindToLife() {
+        return this.<T>bindToLifecycle();
     }
 
     @Override

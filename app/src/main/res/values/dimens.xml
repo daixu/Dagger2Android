@@ -4,4 +4,39 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="fixed_height_bottom_padding">5dp</dimen>
+
+    <!-- 空白小填充 10px -->
+    <dimen name="blank_space_least">5dp</dimen>
+    <!-- 空白最小填充 14px -->
+    <dimen name="blank_space_smallest">7dp</dimen>
+    <!-- 空白最小填充 20px -->
+    <dimen name="blank_space_small">10dp</dimen>
+    <!-- 空白小填充 30px -->
+    <dimen name="blank_space_normal">15dp</dimen>
+    <!-- 空白大填充 40px -->
+    <dimen name="blank_space_large">20dp</dimen>
+    <!-- 空白大填充 60px -->
+    <dimen name="blank_space_largest">30dp</dimen>
+
+    <!-- 默认弧度(10px) -->
+    <dimen name="default_radius">5dp</dimen>
+    <!-- 正常的弧度 -->
+    <dimen name="normal_round_padding">30dp</dimen>
+    <!-- 较大的圆角弧度 -->
+    <dimen name="large_round_padding">45dp</dimen>
+
+    <!-- 线条粗细 -->
+    <dimen name="line_size">1px</dimen>
+
+    <!-- 单行内容列表的高度(普通100px) -->
+    <dimen name="single_item_height_normal">50dp</dimen>
+
+    <!-- 18sp字体(36px) -->
+    <dimen name="text_size_largest">18sp</dimen>
+    <!-- 较大号字体大小17sp(34px) -->
+    <dimen name="text_size_large">17sp</dimen>
+    <!-- 普通的字体大小 14sp(28px)-->
+    <dimen name="text_size_normal">14sp</dimen>
+    <!-- 最小的字体大小 12sp(24px) -->
+    <dimen name="text_size_small">12sp</dimen>
 </resources>

@@ -6,6 +6,7 @@ import com.daixu.dagger.demo.bean.GetGoodsTotalReq;
 import com.daixu.dagger.demo.bean.GetGoodsTotalResp;
 import com.daixu.dagger.demo.bean.GetShopCartResp;
 import com.daixu.dagger.demo.bean.GetUserOrdersReq;
+import com.daixu.dagger.demo.bean.GetUserOrdersResp;
 import com.daixu.dagger.demo.bean.GetUserTodoReq;
 import com.daixu.dagger.demo.bean.GetUserTodoResp;
 import com.daixu.dagger.demo.bean.LoginReq;
@@ -60,6 +61,11 @@ public interface ApiServer {
     @POST("user/userShoppingTrolleyList")
     Flowable<GetShopCartResp> userShoppingTrolleyList(@Body OnlyUserIdReq req);
 
+    /**
+     *
+     * @param req
+     * @return
+     */
     @POST("user/selUserReceivingArea")
     Flowable<UserReceivingAreaResp> selUserReceivingArea(@Body OnlyUserIdReq req);
 
@@ -76,5 +82,5 @@ public interface ApiServer {
      * 根据用户Id查询用户订单
      */
     @POST("order/order/getUserOrders")
-    Flowable<BaseResp> getUserOrders(@Body GetUserOrdersReq req);
+    Flowable<GetUserOrdersResp> getUserOrders(@Body GetUserOrdersReq req);
 }
