@@ -20,8 +20,6 @@ import com.daixu.dagger.demo.bean.OrderCommodityBean;
 import com.daixu.dagger.demo.bean.RxBusEvent;
 import com.daixu.dagger.demo.utils.RxBus;
 import com.daixu.dagger.demo.utils.RxSPTool;
-import com.jkb.fragment.rigger.annotation.LazyLoad;
-import com.jkb.fragment.rigger.annotation.Puppet;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
@@ -45,9 +43,6 @@ import static com.daixu.dagger.demo.common.PreferenceKeys.USER_ID;
 /**
  * Created by 32422 on 2018/3/27.
  */
-
-@Puppet
-@LazyLoad
 public class MyOrderFragment extends RxFragment implements SwipeRefreshLayout.OnRefreshListener, MyOrderContract.View {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -85,9 +80,9 @@ public class MyOrderFragment extends RxFragment implements SwipeRefreshLayout.On
         return fragment;
     }
 
-    public void onLazyLoadViewCreated(Bundle savedInstanceState) {
-        initData();
-    }
+//    public void onLazyLoadViewCreated(Bundle savedInstanceState) {
+//        initData();
+//    }
 
     @Override
     public void onAttach(Context context) {
@@ -124,7 +119,7 @@ public class MyOrderFragment extends RxFragment implements SwipeRefreshLayout.On
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.aid_prompt_color, R.color.colorBackground);
 
         mPresenter.takeView(this);
-        // initData();
+        initData();
 
         View emptyView = LayoutInflater.from(this.getActivity()).inflate(R.layout.layout_empty_view, null);
         mAdapter.setEmptyView(emptyView);

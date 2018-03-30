@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 
 import com.daixu.dagger.demo.R;
 import com.daixu.dagger.demo.view.BaseActivity;
-import com.jkb.fragment.rigger.annotation.Puppet;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 
-@Puppet
 public class MyOrderActivity extends BaseActivity implements HasSupportFragmentInjector {
     private List<Fragment> mList;
     private List<String> mTitleList = new ArrayList<>();
