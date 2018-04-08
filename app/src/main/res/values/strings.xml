@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Dagger2Android</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -42,4 +42,12 @@
     <string name="commodity_deposit">（含押金¥%1$s元）</string>
 
     <string name="interface_address">接口地址:</string>
+
+    <plurals name="show_dev_countdown" formatted="false" msgid="7201398282729229649">
+        <item quantity="other">现在只需再执行 <xliff:g id="STEP_COUNT_1">%1$d</xliff:g> 步操作即可进入开发者模式。</item>
+        <item quantity="one">现在只需再执行 <xliff:g id="STEP_COUNT_0">%1$d</xliff:g> 步操作即可进入开发者模式。</item>
+    </plurals>
+
+    <string name="show_dev_on">"您现在处于开发者模式！"</string>
+    <string name="show_dev_already">"您已处于开发者模式，无需进行此操作。"</string>
 </resources>

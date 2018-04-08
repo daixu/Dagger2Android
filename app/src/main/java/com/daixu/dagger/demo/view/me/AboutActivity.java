@@ -3,7 +3,6 @@ package com.daixu.dagger.demo.view.me;
 import android.content.pm.ShortcutManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,13 +21,16 @@ import static com.daixu.dagger.demo.common.PreferenceKeys.IS_DEV;
 import static com.daixu.dagger.demo.common.PreferenceKeys.TOKEN;
 
 public class AboutActivity extends BaseActivity {
-    private long[] mHits = new long[7];
+    private int mDevHitCountdown;
+    static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         ButterKnife.bind(this);
+
+        mDevHitCountdown = TAPS_TO_BE_A_DEVELOPER;
     }
 
     void exit() {
@@ -52,7 +54,7 @@ public class AboutActivity extends BaseActivity {
         finish();
     }
 
-    @OnClick({R.id.btn_close, R.id.btn_exit, R.id.tv_about})
+    @OnClick({R.id.btn_close, R.id.btn_exit, R.id.btn_about})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_close: {
@@ -63,16 +65,22 @@ public class AboutActivity extends BaseActivity {
                 exit();
             }
             break;
-            case R.id.tv_about: {
+            case R.id.btn_about: {
                 boolean isDev = RxSPTool.getBoolean(this, IS_DEV);
                 if (isDev) {
-                    Toast.makeText(this, "已处于开发者模式", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.show_dev_already), Toast.LENGTH_SHORT).show();
                 } else {
-                    System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
-                    mHits[mHits.length - 1] = SystemClock.uptimeMillis();
-                    if (mHits[0] >= (SystemClock.uptimeMillis() - 1000)) {
-                        RxSPTool.putBoolean(this, IS_DEV, true);
-                        Toast.makeText(this, "已启用开发者模式", Toast.LENGTH_SHORT).show();
+                    if (mDevHitCountdown > 0) {
+                        mDevHitCountdown--;
+                        if (mDevHitCountdown == 0) {
+                            mDevHitCountdown++;
+                            RxSPTool.putBoolean(this, IS_DEV, true);
+                            Toast.makeText(this, getString(R.string.show_dev_on), Toast.LENGTH_SHORT).show();
+                        } else if (mDevHitCountdown > 0 && mDevHitCountdown < (TAPS_TO_BE_A_DEVELOPER - 2)) {
+                            Toast.makeText(this, getResources().getQuantityString(R.plurals.show_dev_countdown, mDevHitCountdown, mDevHitCountdown), Toast.LENGTH_SHORT).show();
+                        }
+                    } else if (mDevHitCountdown < 0) {
+                        Toast.makeText(this, getString(R.string.show_dev_already), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
