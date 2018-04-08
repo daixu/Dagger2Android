@@ -3,6 +3,7 @@ package com.daixu.dagger.demo.di;
 import com.daixu.dagger.demo.view.home.HomeModule;
 import com.daixu.dagger.demo.view.login.LoginActivity;
 import com.daixu.dagger.demo.view.login.LoginModule;
+import com.daixu.dagger.demo.view.main.Main2Activity;
 import com.daixu.dagger.demo.view.main.MainActivity;
 import com.daixu.dagger.demo.view.order.MyOrderActivity;
 import com.daixu.dagger.demo.view.order.MyOrderModule;
@@ -22,6 +23,10 @@ public abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector(modules = {HomeModule.class, TodoModule.class, ShoppingCartModule.class})
     abstract MainActivity mainActivity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = {HomeModule.class, TodoModule.class, ShoppingCartModule.class})
+    abstract Main2Activity main2Activity();
 
     @ActivityScoped
     @ContributesAndroidInjector(modules = {MyOrderModule.class})

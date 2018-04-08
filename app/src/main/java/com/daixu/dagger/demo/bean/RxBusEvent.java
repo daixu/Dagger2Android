@@ -6,5 +6,6 @@ public class RxBusEvent {
 
     public interface RxBusType {
         String REFRESH = "refresh";
+        String FINISH = "finish";
     }
 }

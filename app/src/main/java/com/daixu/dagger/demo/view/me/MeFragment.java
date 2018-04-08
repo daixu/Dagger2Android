@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.daixu.dagger.demo.R;
 import com.daixu.dagger.demo.utils.RxSPTool;
 import com.daixu.dagger.demo.view.dev.DeveloperActivity;
+import com.daixu.dagger.demo.view.main.AnimActivity;
 import com.daixu.dagger.demo.view.order.MyOrderActivity;
 
 import butterknife.BindView;
@@ -67,7 +68,7 @@ public class MeFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.tv_order, R.id.tv_about, R.id.btn_dev})
+    @OnClick({R.id.tv_order, R.id.tv_about, R.id.btn_dev, R.id.btn_switch})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_order: {
@@ -82,6 +83,11 @@ public class MeFragment extends Fragment {
             break;
             case R.id.btn_dev: {
                 Intent intent = new Intent(this.getActivity(), DeveloperActivity.class);
+                startActivity(intent);
+            }
+            break;
+            case R.id.btn_switch: {
+                Intent intent = new Intent(this.getActivity(), AnimActivity.class);
                 startActivity(intent);
             }
             break;

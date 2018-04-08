@@ -15,4 +15,8 @@ public class Constant {
         int COMMON_COMMODITY_TYPE = 1;
         int DEPOSITT_COMMODITY_YPE = 2;
     }
+
+    public interface FinishActivity {
+        String RECEIVER_ACTION_FINISH = "receiver_action_finish";
+    }
 }

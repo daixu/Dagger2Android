@@ -40,8 +40,15 @@
         <activity
             android:name=".view.order.OrderDetailActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".view.dev.DeveloperActivity">
-        </activity>
+        <activity
+            android:name=".view.dev.DeveloperActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.main.AnimActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.main.Main2Activity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

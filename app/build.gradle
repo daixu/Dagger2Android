@@ -97,6 +97,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.meituan.android.walle:library:1.1.6'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.nineoldandroids:library:2.4.0'
 }
 
 walle {
