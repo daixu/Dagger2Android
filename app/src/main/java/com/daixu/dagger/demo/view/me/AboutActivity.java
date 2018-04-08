@@ -1,5 +1,6 @@
 package com.daixu.dagger.demo.view.me;
 
+import android.content.Intent;
 import android.content.pm.ShortcutManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -54,7 +55,7 @@ public class AboutActivity extends BaseActivity {
         finish();
     }
 
-    @OnClick({R.id.btn_close, R.id.btn_exit, R.id.btn_about})
+    @OnClick({R.id.btn_close, R.id.btn_exit, R.id.tv_about})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_close: {
@@ -65,7 +66,7 @@ public class AboutActivity extends BaseActivity {
                 exit();
             }
             break;
-            case R.id.btn_about: {
+            case R.id.tv_about: {
                 boolean isDev = RxSPTool.getBoolean(this, IS_DEV);
                 if (isDev) {
                     Toast.makeText(this, getString(R.string.show_dev_already), Toast.LENGTH_SHORT).show();
@@ -74,8 +75,8 @@ public class AboutActivity extends BaseActivity {
                         mDevHitCountdown--;
                         if (mDevHitCountdown == 0) {
                             mDevHitCountdown++;
-                            RxSPTool.putBoolean(this, IS_DEV, true);
-                            Toast.makeText(this, getString(R.string.show_dev_on), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(this, VerificationActivity.class);
+                            startActivity(intent);
                         } else if (mDevHitCountdown > 0 && mDevHitCountdown < (TAPS_TO_BE_A_DEVELOPER - 2)) {
                             Toast.makeText(this, getResources().getQuantityString(R.plurals.show_dev_countdown, mDevHitCountdown, mDevHitCountdown), Toast.LENGTH_SHORT).show();
                         }

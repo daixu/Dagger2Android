@@ -49,6 +49,10 @@
         <activity
             android:name=".view.main.Main2Activity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.me.VerificationActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
