@@ -9,4 +9,5 @@ public interface PreferenceKeys {
     String TOKEN = "key_token";
 
     String IS_DEV = "is_dev";
+    String IS__ADMIN_DEV = "is_admin_dev";
 }

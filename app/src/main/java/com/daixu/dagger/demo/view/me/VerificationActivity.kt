@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.inputmethod.EditorInfo
 import com.daixu.dagger.demo.R
 import com.daixu.dagger.demo.common.PreferenceKeys.IS_DEV
+import com.daixu.dagger.demo.common.PreferenceKeys.IS__ADMIN_DEV
 import com.daixu.dagger.demo.utils.RxSPTool
 import kotlinx.android.synthetic.main.activity_verification.*
 
@@ -21,6 +22,10 @@ class VerificationActivity : AppCompatActivity() {
                 EditorInfo.IME_ACTION_DONE -> {
                     if (pwd.toString() == "1010") {
                         RxSPTool.putBoolean(this@VerificationActivity, IS_DEV, true)
+                        finish()
+                    } else if (pwd.toString() == "2018") {
+                        RxSPTool.putBoolean(this@VerificationActivity, IS_DEV, true)
+                        RxSPTool.putBoolean(this@VerificationActivity, IS__ADMIN_DEV, true)
                         finish()
                     }
                 }
