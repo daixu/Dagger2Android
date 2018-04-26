@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimaryDark">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@mipmap/login_return"
+            android:drawableStart="@mipmap/login_return"
+            android:onClick="doBack"
+            android:paddingEnd="@dimen/blank_space_smallest"
+            android:paddingLeft="@dimen/blank_space_smallest"
+            android:paddingRight="@dimen/blank_space_smallest"
+            android:paddingStart="@dimen/blank_space_smallest"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:onClick="doBack"
+            android:paddingEnd="@dimen/blank_space_small"
+            android:paddingLeft="@dimen/blank_space_small"
+            android:paddingRight="@dimen/blank_space_small"
+            android:paddingStart="@dimen/blank_space_small"
+            android:src="@mipmap/login_return"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TitleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/img_back"
+            android:layout_toRightOf="@id/img_back"/>
+
+        <TextView
+            android:id="@+id/tv_title_left"
+            style="@style/TitleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_size_small"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_title_right"
+            style="@style/TitleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_size_small"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/imgBtn_title_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:paddingLeft="@dimen/blank_space_normal"
+            android:paddingRight="@dimen/blank_space_normal"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_title_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size"
+        android:background="@color/line_color"
+        android:visibility="gone"/>
+</LinearLayout>

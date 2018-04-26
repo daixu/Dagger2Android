@@ -18,8 +18,6 @@ import android.support.v4.app.FragmentTransaction;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.daixu.dagger.demo.R;
-import com.daixu.dagger.demo.bean.RxBusEvent;
-import com.daixu.dagger.demo.utils.RxBus;
 import com.daixu.dagger.demo.view.BaseActivity;
 import com.daixu.dagger.demo.view.home.HomeFragment;
 import com.daixu.dagger.demo.view.me.AboutActivity;
@@ -36,9 +34,6 @@ import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import timber.log.Timber;
 
 import static com.daixu.dagger.demo.common.Constant.FinishActivity.RECEIVER_ACTION_FINISH;

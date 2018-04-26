@@ -31,6 +31,11 @@ public class AboutActivity extends BaseActivity {
         setContentView(R.layout.activity_about);
         ButterKnife.bind(this);
 
+        showTitleLine();
+        showBackImg();
+
+        setTitleText(R.string.tv_about);
+
         mDevHitCountdown = TAPS_TO_BE_A_DEVELOPER;
     }
 
@@ -55,7 +60,7 @@ public class AboutActivity extends BaseActivity {
         finish();
     }
 
-    @OnClick({R.id.btn_close, R.id.btn_exit, R.id.tv_about})
+    @OnClick({R.id.btn_close, R.id.btn_exit, R.id.tv_about, R.id.btn_load_patch})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_close: {
@@ -85,6 +90,10 @@ public class AboutActivity extends BaseActivity {
                     }
                 }
             }
+            break;
+            case R.id.btn_load_patch: {
+            }
+            break;
             default:
                 break;
         }

@@ -10,4 +10,5 @@ public interface PreferenceKeys {
 
     String IS_DEV = "is_dev";
     String IS__ADMIN_DEV = "is_admin_dev";
+    String SERVER_URL = "server_url";
 }

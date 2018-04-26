@@ -2,8 +2,10 @@ package com.daixu.dagger.demo.view.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.daixu.dagger.demo.R;
@@ -17,23 +19,29 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import dagger.android.AndroidInjection;
 import timber.log.Timber;
 
 import static com.daixu.dagger.demo.common.PreferenceKeys.TOKEN;
 import static com.daixu.dagger.demo.common.PreferenceKeys.USER_ID;
-import static java.lang.String.format;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Inject
     LoginContract.Presenter mPresenter;
+    @BindView(R.id.account)
+    EditText mAccount;
+    @BindView(R.id.password)
+    EditText mPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
 
         findViewById(R.id.email_sign_in_button).setOnClickListener(new OnClickListener() {
             @Override
@@ -50,7 +58,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     private void attemptLogin() {
-        mPresenter.login("13800138004", MD5.encrypt("111111"), "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
+        String phone = mAccount.getText().toString();
+        String password = mPassword.getText().toString();
+        if (TextUtils.isEmpty(phone) && TextUtils.isEmpty(password)) {
+            mPresenter.login("13800138004", MD5.encrypt("111111"), "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
+        } else {
+            mPresenter.login(phone, MD5.encrypt(password), "289bf618-8874-4e1c-8b72-7aceb29fa9e2");
+        }
     }
 
     @Override

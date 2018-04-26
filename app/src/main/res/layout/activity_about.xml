@@ -5,7 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.daixu.dagger.demo.view.me.AboutActivity">
+
+    <include
+        layout="@layout/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"/>
 
     <Button
         android:id="@+id/btn_close"
@@ -28,4 +34,10 @@
         android:text="关于"
         android:textColor="@color/main_body_major_color"
         android:textSize="@dimen/text_size_normal"/>
+
+    <Button
+        android:id="@+id/btn_load_patch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"/>
 </LinearLayout>

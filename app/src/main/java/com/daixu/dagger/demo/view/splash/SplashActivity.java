@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.text.TextUtils;
-import android.view.View;
 
 import com.daixu.dagger.demo.R;
 import com.daixu.dagger.demo.utils.RxHelper;
@@ -35,11 +34,12 @@ public class SplashActivity extends BaseActivity {
         updateViews();
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        mLayoutSplash.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-    }
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
+//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_FULLSCREEN);
+//    }
 
     protected void updateViews() {
         RxHelper.countdown(3)
@@ -75,13 +75,11 @@ public class SplashActivity extends BaseActivity {
             startActivity(intent);
             finish();
             // ARouter.getInstance().build("/jy/main").navigation();
-            finish();
         } else {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
 //            ARouter.getInstance().build("/jy/login").navigation();
-            finish();
         }
     }
 

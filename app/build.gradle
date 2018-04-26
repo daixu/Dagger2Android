@@ -99,6 +99,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation 'com.nineoldandroids:library:2.4.0'
+
+    implementation 'com.jaeger.statusbarutil:library:1.4.0'
 }
 
 walle {

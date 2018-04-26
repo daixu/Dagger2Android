@@ -10,6 +10,11 @@
         <!--<item name="android:navigationBarColor" tools:ignore="NewApi">@color/default_bg_color</item>-->
     </style>
 
+    <style name="NoTitleTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
     <style name="custom_dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -20,5 +25,16 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <style name="TitleTextStyle" parent="android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:singleLine">true</item>
+        <!--<item name="android:paddingLeft">@dimen/blank_space_normal</item>-->
+        <item name="android:paddingRight">@dimen/blank_space_normal</item>
+        <item name="android:maxLength">10</item>
+        <!--<item name="android:drawablePadding">@dimen/default_drawable_padding</item>
+        <item name="android:gravity">center_vertical</item>-->
     </style>
 </resources>

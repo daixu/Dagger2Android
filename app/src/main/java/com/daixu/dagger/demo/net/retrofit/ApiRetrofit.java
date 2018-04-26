@@ -1,7 +1,10 @@
 package com.daixu.dagger.demo.net.retrofit;
 
+import android.text.TextUtils;
+
 import com.daixu.dagger.demo.ToDoApplication;
 import com.daixu.dagger.demo.utils.LoginStateUtil;
+import com.daixu.dagger.demo.utils.RxSPTool;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -18,6 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import timber.log.Timber;
 
 import static com.daixu.dagger.demo.common.Constant.Url.API_SERVER_URL;
+import static com.daixu.dagger.demo.common.PreferenceKeys.SERVER_URL;
 import static java.lang.String.format;
 
 /**
@@ -29,8 +33,13 @@ public class ApiRetrofit {
     private static Retrofit retrofit;
 
     public ApiRetrofit() {
+        String url = RxSPTool.getString(ToDoApplication.getInstance().getApplicationContext(), SERVER_URL);
+        if (TextUtils.isEmpty(url)) {
+            url = API_SERVER_URL;
+        }
+        Timber.tag("url=").e(url);
         retrofit = new Retrofit.Builder()
-                .baseUrl(API_SERVER_URL)
+                .baseUrl(url)
                 .client(getOkHttpClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .addConverterFactory(GsonConverterFactory.create())

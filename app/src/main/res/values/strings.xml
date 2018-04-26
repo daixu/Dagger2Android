@@ -50,4 +50,9 @@
 
     <string name="show_dev_on">"您现在处于开发者模式！"</string>
     <string name="show_dev_already">"您已处于开发者模式，无需进行此操作。"</string>
+
+    <array name="server_url">
+        <item>http://api.front.jinyoufarm.cn/api/</item>
+        <item>http://api.front.jinyoufarm.com/api/</item>
+    </array>
 </resources>
